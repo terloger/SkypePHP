@@ -121,23 +121,28 @@ class skype {
 		return str_replace(".", "", microtime(1));
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	* URLtoUser
 	*
 	* Convert a Skype conversation URL to the name of the user
 	* $url -> conversation url
 	*/
-	private function URLtoUser($url) {
+	public function URLtoUser($url) {
 		return str_replace("https://db3-client-s.gateway.messenger.live.com/v1/users/ME/contacts/", "", str_replace("8:", "", str_replace("19:", "", $url)));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
 	* sendMessage
 	*
@@ -260,7 +265,7 @@ class skype {
 	* $historydisclosed -> "true" or "false"
 	*/
 	public function ifGroupHistoryDisclosed($group, $historydisclosed) {
-		$requete = $this->web("https://client-s.gateway.messenger.live.com/v1/threads/19:22b5a075499b4da78b18d6013e1e69ad@thread.skype/properties?name=historydisclosed", "PUT", json_encode(Array("historydisclosed" => $historydisclosed)));
+		$requete = $this->web("https://client-s.gateway.messenger.live.com/v1/threads/19:$group/properties?name=historydisclosed", "PUT", json_encode(Array("historydisclosed" => $historydisclosed)));
 		
 		return (empty($requete) ? true : false);
 	}	
